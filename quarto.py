@@ -134,7 +134,7 @@ class JogoQuarto(Game):
     Implementação da classe de jogo Quarto com gestão de timeout.
     """
     # Constante da classe que define o tempo limite (em segundos) por jogada
-    MOVE_TIMEOUT = tempo_de_execucao(fib, 37)[1]
+    MOVE_TIMEOUT = tempo_de_execucao(fib, 40)[1]
 
     def __init__(self, timeout=None):
         if timeout is not None:
@@ -211,6 +211,13 @@ class JogoQuarto(Game):
                 if verbose:
                     print(f"\n TIMEOUT! O jogador {jogador_atual} demorou {elapsed_time:.3f}s "
                           f"(Limite: {self.MOVE_TIMEOUT:.2f}s) e foi desclassificado!\n")
+                self.disqualified_player = jogador_atual
+                break
+
+            # NOVA VALIDAÇÃO: Verifica se a jogada faz parte das jogadas legais possíveis
+            if jogada not in self.actions(estado):
+                if verbose:
+                    print(f"\n JOGADA INVÁLIDA! O jogador {jogador_atual} devolveu uma jogada ilegal: {jogada}\n")
                 self.disqualified_player = jogador_atual
                 break
 
