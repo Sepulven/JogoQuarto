@@ -134,7 +134,7 @@ class JogoQuarto(Game):
     Implementação da classe de jogo Quarto com gestão de timeout.
     """
     # Constante da classe que define o tempo limite (em segundos) por jogada
-    MOVE_TIMEOUT = tempo_de_execucao(fib, 40)[1]
+    MOVE_TIMEOUT = tempo_de_execucao(fib, 35)[1]
 
     def __init__(self, timeout=None):
         if timeout is not None:
